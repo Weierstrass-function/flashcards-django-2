@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# SQLite DB
+*.sqlite3
+
+# Django static
+/staticfiles/
+media/
+
+# VSCode
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
