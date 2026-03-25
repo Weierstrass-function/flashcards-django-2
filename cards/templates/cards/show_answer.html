@@ -1,0 +1,46 @@
+{% extends "main/base.html" %}
+
+{% block title %}Ответ: {{ deck.name }}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto mt-8">
+    <div class="card bg-base-300 shadow-xl">
+        <div class="card-body space-y-4">
+            <h1 class="card-title text-2xl">Результат</h1>
+
+            {% if is_correct %}
+            <div class="alert alert-success">Верно!</div>
+            {% else %}
+            <div class="alert alert-error">Пока неверно.</div>
+            {% endif %}
+
+            <div>
+                <p class="opacity-70 mb-1">Вопрос</p>
+                <p class="font-medium">{{ card.question }}</p>
+            </div>
+
+            <div>
+                <p class="opacity-70 mb-1">Ваш ответ</p>
+                <p>{{ user_answer }}</p>
+            </div>
+
+            <div>
+                <p class="opacity-70 mb-1">Правильный ответ</p>
+                <p class="font-medium">{{ card.answer }}</p>
+            </div>
+
+            {% if card.extra_for_answer %}
+            <div>
+                <p class="opacity-70 mb-1">Дополнительно</p>
+                <p>{{ card.extra_for_answer }}</p>
+            </div>
+            {% endif %}
+
+            <div class="flex gap-3 pt-2">
+                <a href="{% url 'get_question' deck.id %}" class="btn btn-primary">Следующая карточка</a>
+                <a href="{% url 'deck_detail' deck.id %}" class="btn btn-ghost">К деке</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
